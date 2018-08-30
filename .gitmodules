@@ -1,0 +1,6 @@
+[submodule "NORTRIP"]
+	path = NORTRIP
+	url = https://github.com/metno/NORTRIP.git
+[submodule "NORTRIP_multiroad"]
+	path = NORTRIP_multiroad
+	url = https://github.com/metno/NORTRIP_multiroad.git
