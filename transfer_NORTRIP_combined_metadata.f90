@@ -100,6 +100,16 @@
     !Road type actvity factors
     if (.not.allocated(transfer_road_type_activity_flag)) allocate (transfer_road_type_activity_flag(num_road_type_activity,0:transfer_n_roads))
 
+    !Specify data that is not specified by multiroad is read by NORTRIP and defaults used
+    transfer_h_sus(1:transfer_n_roads)=1.0
+    transfer_h_texture(1:transfer_n_roads)=1.0
+    transfer_observed_moisture_cutoff_value(1:transfer_n_roads)=1.5
+    transfer_z2_T(1:transfer_n_roads)=25.
+    transfer_SL1_ospm(1:transfer_n_roads)=50.
+    transfer_SL2_ospm(1:transfer_n_roads)=50.
+    transfer_f_roof_ospm(1:transfer_n_roads)=0.8
+    transfer_RecHeight_ospm(1:transfer_n_roads)=3.0
+    transfer_f_turb_ospm(1:transfer_n_roads)=1.0
     
     !Write data used by individual road links
     !write(unit_in,'(a40,a,<n_save_links>i12)') 'Road index',achar(9),inputdata_int_rl(roadindex_rl_index,save_links(1:n_save_links))
@@ -279,40 +289,52 @@
     
     !Write data used by individual road links
     Road_ID=transfer_Road_ID
-    roadtype_index=transfer_roadtype_index
+    b_road=transfer_b_road
     d_index=transfer_d_index
     p_index=transfer_p_index
+    roadtype_index=transfer_roadtype_index
+
     n_lanes=transfer_n_lanes
-    b_road=transfer_b_road
+    b_lane=transfer_b_lane
     b_canyon=transfer_b_canyon
     h_canyon(1,:)=transfer_h_canyon(1,:)
     h_canyon(2,:)=transfer_h_canyon(2,:)
-    choose_receptor_ospm=transfer_choose_receptor_ospm
     ang_road=transfer_ang_road
     slope_road=transfer_slope_road
     LAT=transfer_LAT
     LON=transfer_LON
     Z_SURF=transfer_Z_SURF
-    albedo_road=transfer_albedo_road
-    wind_speed_correction=transfer_wind_speed_correction
     z_FF=transfer_z_FF
     z_T=transfer_z_T
+    z2_T=transfer_z2_T
+    albedo_road=transfer_albedo_road
     DIFUTC_H=transfer_DIFUTC_H
-    save_road_data_flag=transfer_save_road_data_flag
+    Pressure=transfer_Pressure
+    observed_moisture_cutoff_value=transfer_observed_moisture_cutoff_value
+    wind_speed_correction=transfer_wind_speed_correction
+    h_sus=transfer_h_sus
+    h_texture=transfer_h_texture
+
+    choose_receptor_ospm=transfer_choose_receptor_ospm
+    SL1_ospm=transfer_SL1_ospm
+    SL2_ospm=transfer_SL2_ospm
+    f_roof_ospm=transfer_f_roof_ospm
+    RecHeight_ospm=transfer_RecHeight_ospm
+    f_turb_ospm=transfer_f_turb_ospm
 
     exhaust_EF(he,:)=transfer_exhaust_EF(he,:)
     exhaust_EF(li,:)=transfer_exhaust_EF(li,:)
     NOX_EF(he,:)=transfer_NOX_EF(he,:)
     NOX_EF(li,:)=transfer_NOX_EF(li,:)
     
+    save_road_data_flag=transfer_save_road_data_flag
+    line_or_grid_data_flag=transfer_line_or_grid_data_flag
     
     x_road(1,:)=transfer_x_road(1,:)
     y_road(1,:)=transfer_y_road(1,:)
     x_road(2,:)=transfer_x_road(2,:)
     y_road(2,:)=transfer_y_road(2,:)
     length_road=transfer_length_road
-    line_or_grid_data_flag=transfer_line_or_grid_data_flag
-
 
     road_type_activity_flag(road_type_salt_index(1),:)=transfer_road_type_activity_flag(transfer_road_type_salt_index(1),:)
     road_type_activity_flag(road_type_salt_index(2),:)=transfer_road_type_activity_flag(transfer_road_type_salt_index(2),:)
@@ -320,6 +342,8 @@
     road_type_activity_flag(road_type_ploughing_index,:)=transfer_road_type_activity_flag(transfer_road_type_ploughing_index,:)
     road_type_activity_flag(road_type_cleaning_index,:)=transfer_road_type_activity_flag(transfer_road_type_cleaning_index,:)
 
+    !Note start and end dates are not read.Runs and saves for the input data period
+    
     n_skyview=transfer_n_skyview
     allocate (az_skyview(n_skyview,0:n_roads))
     allocate (zen_skyview(n_skyview,0:n_roads))

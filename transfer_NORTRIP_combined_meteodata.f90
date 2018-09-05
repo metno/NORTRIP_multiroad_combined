@@ -10,10 +10,6 @@
     
     if (.not.allocated(transfer_meteo_data)) allocate(transfer_meteo_data(transfer_num_meteo_index,transfer_n_time,0:transfer_n_roads))
 
-    !Open the file for writing
-    unit_in=30
-    open(unit_in,file=pathfilename_meteo,access='sequential',status='unknown')  
-    
     write(unit_logfile,'(a)') ' Transfering meteodata to NORTRIP '//trim(pathfilename_meteo)
 
     !Write header
