@@ -1,0 +1,90 @@
+NORTRIP_multiroad_combined_definitions.o : NORTRIP_multiroad_combined_definitions.f90
+NORTRIP_multiroad_definitions.o : NORTRIP_multiroad/NORTRIP_multiroad_definitions.f90
+NORTRIP_definitions.o : NORTRIP/NORTRIP_definitions.f90
+
+NORTRIP_multiroad_combined_program.o : NORTRIP_multiroad_combined_program.f90 NORTRIP_multiroad/NORTRIP_multiroad_definitions.o NORTRIP_multiroad_combined_definitions.o NORTRIP/NORTRIP_definitions.o
+
+transfer_NORTRIP_combined_airqualitydata.o : transfer_NORTRIP_combined_airqualitydata.f90 NORTRIP_multiroad/NORTRIP_multiroad_definitions.o NORTRIP_multiroad_combined_definitions.o NORTRIP/NORTRIP_definitions.o
+
+transfer_NORTRIP_combined_datedata.o : transfer_NORTRIP_combined_datedata.f90 NORTRIP_multiroad/NORTRIP_multiroad_definitions.o NORTRIP_multiroad_combined_definitions.o NORTRIP/NORTRIP_definitions.o
+
+transfer_NORTRIP_combined_initialdata.o : transfer_NORTRIP_combined_initialdata.f90 NORTRIP_multiroad/NORTRIP_multiroad_definitions.o NORTRIP_multiroad_combined_definitions.o NORTRIP/NORTRIP_definitions.o 
+
+transfer_NORTRIP_combined_metadata.o : transfer_NORTRIP_combined_metadata.f90 NORTRIP_multiroad/NORTRIP_multiroad_definitions.o NORTRIP_multiroad_combined_definitions.o NORTRIP/NORTRIP_definitions.o
+
+transfer_NORTRIP_combined_meteodata.o : transfer_NORTRIP_combined_meteodata.f90 NORTRIP_multiroad/NORTRIP_multiroad_definitions.o NORTRIP_multiroad_combined_definitions.o NORTRIP/NORTRIP_definitions.o
+
+transfer_NORTRIP_combined_pathnames.o : transfer_NORTRIP_combined_pathnames.f90 NORTRIP_multiroad/NORTRIP_multiroad_definitions.o NORTRIP_multiroad_combined_definitions.o NORTRIP/NORTRIP_definitions.o
+
+transfer_NORTRIP_combined_trafficdata.o : transfer_NORTRIP_combined_trafficdata.f90 NORTRIP_multiroad/NORTRIP_multiroad_definitions.o NORTRIP_multiroad_combined_definitions.o NORTRIP/NORTRIP_definitions.o
+
+NORTRIP_calc_radiation.o :  NORTRIP/NORTRIP_definitions.o
+NORTRIP_concentrations.o :  NORTRIP/NORTRIP_definitions.o
+NORTRIP_dispersion.o :  NORTRIP/NORTRIP_definitions.o
+NORTRIP_display_results.o :  NORTRIP/NORTRIP_definitions.o
+NORTRIP_dust_emission_submodel.o :  NORTRIP/NORTRIP_definitions.o
+NORTRIP_fortran_control_v2.o :  NORTRIP/NORTRIP_definitions.o
+NORTRIP_functions.o :  NORTRIP/NORTRIP_definitions.o
+NORTRIP_grid_roads.o :  NORTRIP/NORTRIP_definitions.o
+NORTRIP_initialise_data.o :  NORTRIP/NORTRIP_definitions.o
+NORTRIP_initialise_time.o :  NORTRIP/NORTRIP_definitions.o
+NORTRIP_inputdata_subroutines.o :  NORTRIP/NORTRIP_definitions.o
+NORTRIP_inputparams_subroutines.o :  NORTRIP/NORTRIP_definitions.o
+NORTRIP_logfile_subroutines.o :  NORTRIP/NORTRIP_definitions.o
+NORTRIP_main_run.o :  NORTRIP/NORTRIP_definitions.o
+NORTRIP_main_run_forecast.o :  NORTRIP/NORTRIP_definitions.o
+NORTRIP_maths.o :  NORTRIP/NORTRIP_definitions.o
+NORTRIP_read_commandline.o :  NORTRIP/NORTRIP_definitions.o
+NORTRIP_reading_functions.o :  NORTRIP/NORTRIP_definitions.o
+NORTRIP_read_init_data.o :  NORTRIP/NORTRIP_definitions.o
+NORTRIP_read_init_data_single.o :  NORTRIP/NORTRIP_definitions.o
+NORTRIP_read_pathnames.o :  NORTRIP/NORTRIP_definitions.o
+NORTRIP_reassign_input_arrays.o :  NORTRIP/NORTRIP_definitions.o
+NORTRIP_save_data.o :  NORTRIP/NORTRIP_definitions.o
+NORTRIP_save_episode_emissions.o :  NORTRIP/NORTRIP_definitions.o
+NORTRIP_save_init_data.o :  NORTRIP/NORTRIP_definitions.o
+NORTRIP_save_init_data_single.o :  NORTRIP/NORTRIP_definitions.o
+NORTRIP_save_road_emission_and_mass_data.o :  NORTRIP/NORTRIP_definitions.o
+NORTRIP_save_road_meteo_data.o :  NORTRIP/NORTRIP_definitions.o
+NORTRIP_save_road_summary_data.o :  NORTRIP/NORTRIP_definitions.o
+NORTRIP_save_uemep_emissions.o :  NORTRIP/NORTRIP_definitions.o
+NORTRIP_set_activity_data.o :  NORTRIP/NORTRIP_definitions.o
+NORTRIP_surface_energy_submodel.o :  NORTRIP/NORTRIP_definitions.o
+NORTRIP_surface_moisture_submodel.o :  NORTRIP/NORTRIP_definitions.o
+NORTRIP_time_functions.o :  NORTRIP/NORTRIP_definitions.o
+NORTRIP_unbin_variables.o :  NORTRIP/NORTRIP_definitions.o
+ospm_nortrip_fortran.o :  NORTRIP/NORTRIP_definitions.o
+
+NORTRIP_multiroad_control_64bit.o : NORTRIP_multiroad/NORTRIP_multiroad_definitions.o
+NORTRIP_multiroad_extra_functions.o : NORTRIP_multiroad/NORTRIP_multiroad_definitions.o
+NORTRIP_multiroad_find_init_file.o : NORTRIP_multiroad/NORTRIP_multiroad_definitions.o
+NORTRIP_multiroad_read_emission.o : NORTRIP_multiroad/NORTRIP_multiroad_definitions.o
+NORTRIP_multiroad_read_main_inputs.o : NORTRIP_multiroad/NORTRIP_multiroad_definitions.o
+NORTRIP_multiroad_read_metcoop_netcdf4.o : NORTRIP_multiroad/NORTRIP_multiroad_definitions.o
+NORTRIP_multiroad_read_meteo_netcdf4.o : NORTRIP_multiroad/NORTRIP_multiroad_definitions.o
+NORTRIP_multiroad_read_meteo_obs_data.o : NORTRIP_multiroad/NORTRIP_multiroad_definitions.o
+NORTRIP_multiroad_read_region_EF_data.o : NORTRIP_multiroad/NORTRIP_multiroad_definitions.o
+NORTRIP_multiroad_read_skyview_data.o : NORTRIP_multiroad/NORTRIP_multiroad_definitions.o
+NORTRIP_multiroad_read_staticroadlink_data.o : NORTRIP_multiroad/NORTRIP_multiroad_definitions.o
+NORTRIP_multiroad_read_weekdynamictraffic_data.o : NORTRIP_multiroad/NORTRIP_multiroad_definitions.o
+NORTRIP_multiroad_save_airqualitydata.o : NORTRIP_multiroad/NORTRIP_multiroad_definitions.o
+NORTRIP_multiroad_save_info_file.o : NORTRIP_multiroad/NORTRIP_multiroad_definitions.o
+NORTRIP_multiroad_save_initialdata.o : NORTRIP_multiroad/NORTRIP_multiroad_definitions.o
+NORTRIP_multiroad_save_metadata.o : NORTRIP_multiroad/NORTRIP_multiroad_definitions.o
+NORTRIP_multiroad_save_meteodata.o : NORTRIP_multiroad/NORTRIP_multiroad_definitions.o
+NORTRIP_multiroad_save_trafficdata.o : NORTRIP_multiroad/NORTRIP_multiroad_definitions.o
+NORTRIP_read_main_EPISODE_file.o : NORTRIP_multiroad/NORTRIP_multiroad_definitions.o
+NORTRIP_read_t2m500yr_netcdf4.o : NORTRIP_multiroad/NORTRIP_multiroad_definitions.o
+process_terrain_data_64bit.o : NORTRIP_multiroad/NORTRIP_multiroad_definitions.o
+process_usgs_dem_data.o : NORTRIP_multiroad/NORTRIP_multiroad_definitions.o
+read_esri_ascii_terrain_file.o : NORTRIP_multiroad/NORTRIP_multiroad_definitions.o
+read_netcdf4_terrain_file.o : NORTRIP_multiroad/NORTRIP_multiroad_definitions.o
+lambert_projection.o : NORTRIP_multiroad/NORTRIP_multiroad_definitions.o
+
+Get3Arguments_MET.o : NORTRIP_multiroad/NORTRIP_multiroad_definitions.o
+incrtm.o : NORTRIP_multiroad/NORTRIP_multiroad_definitions.o
+leap.o : NORTRIP_multiroad/NORTRIP_multiroad_definitions.o
+ll2utm.o : NORTRIP_multiroad/NORTRIP_multiroad_definitions.o
+nxtdat.o : NORTRIP_multiroad/NORTRIP_multiroad_definitions.o
+utm2ll.o : NORTRIP_multiroad/NORTRIP_multiroad_definitions.o
+

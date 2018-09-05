@@ -1,0 +1,93 @@
+#=============================================================================
+SRCS =	\
+	NORTRIP_multiroad_combined_definitions.f90\
+	NORTRIP_multiroad/NORTRIP_multiroad_definitions.f90\
+	NORTRIP/NORTRIP_definitions.f90\
+\
+	NORTRIP_multiroad_combined_program.f90\
+	transfer_NORTRIP_combined_airqualitydata.f90\
+	transfer_NORTRIP_combined_datedata.f90\
+	transfer_NORTRIP_combined_initialdata.f90\
+	transfer_NORTRIP_combined_metadata.f90\
+	transfer_NORTRIP_combined_meteodata.f90\
+	transfer_NORTRIP_combined_pathnames.f90\
+	transfer_NORTRIP_combined_trafficdata.f90\
+\
+	NORTRIP/NORTRIP_calc_radiation.f90\
+	NORTRIP/NORTRIP_concentrations.f90\
+	NORTRIP/NORTRIP_dispersion.f90\
+	NORTRIP/NORTRIP_display_results.f90\
+	NORTRIP/NORTRIP_dust_emission_submodel.f90\
+	NORTRIP/NORTRIP_fortran_control_v2.f90\
+	NORTRIP/NORTRIP_functions.f90\
+	NORTRIP/NORTRIP_grid_roads.f90\
+	NORTRIP/NORTRIP_initialise_data.f90\
+	NORTRIP/NORTRIP_initialise_time.f90\
+	NORTRIP/NORTRIP_inputdata_subroutines.f90\
+	NORTRIP/NORTRIP_inputparams_subroutines.f90\
+	NORTRIP/NORTRIP_logfile_subroutines.f90\
+	NORTRIP/NORTRIP_main_run.f90\
+	NORTRIP/NORTRIP_main_run_forecast.f90\
+	NORTRIP/NORTRIP_maths.f90\
+	NORTRIP/NORTRIP_read_commandline.f90\
+	NORTRIP/NORTRIP_reading_functions.f90\
+	NORTRIP/NORTRIP_read_init_data.f90\
+	NORTRIP/NORTRIP_read_init_data_single.f90\
+	NORTRIP/NORTRIP_read_pathnames.f90\
+	NORTRIP/NORTRIP_reassign_input_arrays.f90\
+	NORTRIP/NORTRIP_save_data.f90\
+	NORTRIP/NORTRIP_save_episode_emissions.f90\
+	NORTRIP/NORTRIP_save_init_data.f90\
+	NORTRIP/NORTRIP_save_init_data_single.f90\
+	NORTRIP/NORTRIP_save_road_emission_and_mass_data.f90\
+	NORTRIP/NORTRIP_save_road_meteo_data.f90\
+	NORTRIP/NORTRIP_save_road_summary_data.f90\
+	NORTRIP/NORTRIP_save_uemep_emissions.f90\
+	NORTRIP/NORTRIP_set_activity_data.f90\
+	NORTRIP/NORTRIP_surface_energy_submodel.f90\
+	NORTRIP/NORTRIP_surface_moisture_submodel.f90\
+	NORTRIP/NORTRIP_time_functions.f90\
+	NORTRIP/NORTRIP_unbin_variables.f90\
+	NORTRIP/OSPM/ospm_nortrip_fortran.f90\
+\
+	NORTRIP_multiroad/NORTRIP_multiroad_control_64bit.f90\
+	NORTRIP_multiroad/NORTRIP_multiroad_extra_functions.f90\
+	NORTRIP_multiroad/NORTRIP_multiroad_find_init_file.f90\
+	NORTRIP_multiroad/NORTRIP_multiroad_read_emission.f90\
+	NORTRIP_multiroad/NORTRIP_multiroad_read_main_inputs.f90\
+	NORTRIP_multiroad/NORTRIP_multiroad_read_metcoop_netcdf4.f90\
+	NORTRIP_multiroad/NORTRIP_multiroad_read_meteo_netcdf4.f90\
+	NORTRIP_multiroad/NORTRIP_multiroad_read_meteo_obs_data.f90\
+	NORTRIP_multiroad/NORTRIP_multiroad_read_region_EF_data.f90\
+	NORTRIP_multiroad/NORTRIP_multiroad_read_skyview_data.f90\
+	NORTRIP_multiroad/NORTRIP_multiroad_read_staticroadlink_data.f90\
+	NORTRIP_multiroad/NORTRIP_multiroad_read_weekdynamictraffic_data.f90\
+	NORTRIP_multiroad/NORTRIP_multiroad_save_airqualitydata.f90\
+	NORTRIP_multiroad/NORTRIP_multiroad_save_info_file.f90\
+	NORTRIP_multiroad/NORTRIP_multiroad_save_initialdata.f90\
+	NORTRIP_multiroad/NORTRIP_multiroad_save_metadata.f90\
+	NORTRIP_multiroad/NORTRIP_multiroad_save_meteodata.f90\
+	NORTRIP_multiroad/NORTRIP_multiroad_save_trafficdata.f90\
+	NORTRIP_multiroad/NORTRIP_read_main_EPISODE_file.f90\
+	NORTRIP_multiroad/NORTRIP_read_t2m500yr_netcdf4.f90\
+	NORTRIP_multiroad/process_terrain_data_64bit.f90\
+	NORTRIP_multiroad/process_usgs_dem_data.f90\
+	NORTRIP_multiroad/read_esri_ascii_terrain_file.f90\
+	NORTRIP_multiroad/read_netcdf4_terrain_file.f90\
+\
+	NORTRIP_multiroad/uEMEP/lambert_projection.f90\
+\
+	NORTRIP_multiroad/NILU/distrl.for\
+	NORTRIP_multiroad/NILU/Get3Arguments_MET.f90\
+	NORTRIP_multiroad/NILU/incrtm.f90\
+	NORTRIP_multiroad/NILU/leap.f90\
+	NORTRIP_multiroad/NILU/ll2utm.for\
+	NORTRIP_multiroad/NILU/nxtdat.for\
+	NORTRIP_multiroad/NILU/utm2ll.for\
+
+
+
+
+FOBJ=NORTRIP_multiroad_combined_definitions.o NORTRIP_multiroad_definitions.o NORTRIP_definitions.o NORTRIP_multiroad_combined_program.o transfer_NORTRIP_combined_airqualitydata.o transfer_NORTRIP_combined_datedata.o transfer_NORTRIP_combined_initialdata.o transfer_NORTRIP_combined_metadata.o transfer_NORTRIP_combined_meteodata.o transfer_NORTRIP_combined_pathnames.o transfer_NORTRIP_combined_trafficdata.o NORTRIP_calc_radiation.o NORTRIP_concentrations.o  NORTRIP_dispersion.o NORTRIP_display_results.o NORTRIP_dust_emission_submodel.o NORTRIP_fortran_control_v2.o NORTRIP_functions.o NORTRIP_grid_roads.o NORTRIP_initialise_data.o NORTRIP_initialise_time.o NORTRIP_inputdata_subroutines.o NORTRIP_inputparams_subroutines.o NORTRIP_logfile_subroutines.o NORTRIP_main_run.o NORTRIP_main_run_forecast.o NORTRIP_maths.o NORTRIP_read_commandline.o NORTRIP_reading_functions.o NORTRIP_read_init_data.o NORTRIP_read_init_data_single.o NORTRIP_read_pathnames.o NORTRIP_reassign_input_arrays.o NORTRIP_save_data.o NORTRIP_save_episode_emissions.o NORTRIP_save_init_data.o NORTRIP_save_init_data_single.o NORTRIP_save_road_emission_and_mass_data.o NORTRIP_save_road_meteo_data.o NORTRIP_save_road_summary_data.o NORTRIP_save_uemep_emissions.o NORTRIP_set_activity_data.o NORTRIP_surface_energy_submodel.o NORTRIP_surface_moisture_submodel.o NORTRIP_time_functions.o NORTRIP_unbin_variables.o ospm_nortrip_fortran.o NORTRIP_multiroad_control_64bit.o  NORTRIP_multiroad_extra_functions.o NORTRIP_multiroad_find_init_file.o NORTRIP_multiroad_read_emission.o NORTRIP_multiroad_read_main_inputs.o NORTRIP_multiroad_read_metcoop_netcdf4.o NORTRIP_multiroad_read_meteo_netcdf4.o NORTRIP_multiroad_read_meteo_obs_data.o NORTRIP_multiroad_read_region_EF_data.o NORTRIP_multiroad_read_skyview_data.o NORTRIP_multiroad_read_staticroadlink_data.o NORTRIP_multiroad_read_weekdynamictraffic_data.o NORTRIP_multiroad_save_airqualitydata.o NORTRIP_multiroad_save_info_file.o NORTRIP_multiroad_save_initialdata.o NORTRIP_multiroad_save_metadata.o NORTRIP_multiroad_save_meteodata.o NORTRIP_multiroad_save_trafficdata.o NORTRIP_read_main_EPISODE_file.o NORTRIP_read_t2m500yr_netcdf4.o process_terrain_data_64bit.o process_usgs_dem_data.o read_esri_ascii_terrain_file.o read_netcdf4_terrain_file.o lambert_projection.o  distrl.o Get3Arguments_MET.o incrtm.o leap.o ll2utm.o nxtdat.o utm2ll.o
+
+
