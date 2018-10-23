@@ -43,7 +43,8 @@ subroutine transfer_preprocessor_to_combined_airqualitydata
             .or.(use_only_special_links_flag.eq.0).or.(use_only_special_links_flag.eq.2)) then
         
             do t=1,n_hours_input
-                              
+                
+                transfer_airquality_data(:,t,i)=transfer_nodata      
                 transfer_airquality_data(transfer_EP_emis_index,t,i)=airquality_data(EP_emis_index,t,i)*conversion
                 transfer_airquality_data(transfer_NOX_emis_index,t,i)=airquality_data(NOX_emis_index,t,i)*conversion
                 transfer_airquality_data(transfer_f_conc_index,t,i)=airquality_data(f_conc_index,t,i)        

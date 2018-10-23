@@ -379,6 +379,13 @@
     else
         NOX_EF_available=1
     endif
+    
+    !Set these two to 0 since the emissions are transferred through the time series data
+    !Neither of these two emission factors have been defined I think
+    !This is not true they transferred i nthe metadata file
+    !FIND OUT WHAT IS HAPPENING!
+    exhaust_EF_available=0
+    NOX_EF_available=0
 
     if (allocated(transfer_d_index)) deallocate (transfer_d_index)
     if (allocated(transfer_p_index)) deallocate (transfer_p_index)
