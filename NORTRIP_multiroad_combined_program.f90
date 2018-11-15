@@ -109,6 +109,7 @@
     !35 ERROR: Number of dates in meteo input file (',n_date,') not the same as in traffic input file (',n_time,').
     !36 ERROR: Number of dates in airquality input file (',n_date,') not the same as in traffic input file (',n_time,').
     !37 ERROR: Main NORTRIP input file does not exist.
+    !38 ERROR reading meteo file
     
     
     
