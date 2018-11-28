@@ -10,7 +10,8 @@
     
     if (.not.allocated(transfer_meteo_data)) allocate(transfer_meteo_data(transfer_num_meteo_index,transfer_n_time,0:transfer_n_roads))
 
-    write(unit_logfile,'(a)') ' Transfering meteodata to NORTRIP '//trim(pathfilename_meteo)
+    !pathfilename_meteo=trim(pathname_meteo)//trim(filename_meteo)
+    !write(unit_logfile,'(a)') ' Transfering meteodata to NORTRIP '//trim(pathfilename_meteo)
 
     !Write header
     write(unit_logfile,'(27a)') 'Road_number',achar(9),'Station_number',achar(9),'Time',achar(9),'T2m',achar(9),'FF',achar(9),'DD',achar(9),'RH',achar(9), &
