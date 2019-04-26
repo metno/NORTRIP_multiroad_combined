@@ -19,8 +19,6 @@
     NORTRIP_preprocessor_combined_flag=NORTRIP_multiroad_combined_flag
     NORTRIP_fortran_combined_flag=NORTRIP_multiroad_combined_flag
  
-    Write(*,*) 'Starting NORTRIP_multiroad_combined_program'
-      
     call NORTRIP_multiroad_control_64bit
     
     if (NORTRIP_multiroad_combined_flag) then
@@ -110,6 +108,7 @@
     !36 ERROR: Number of dates in airquality input file (',n_date,') not the same as in traffic input file (',n_time,').
     !37 ERROR: Main NORTRIP input file does not exist.
     !38 ERROR reading meteo file
+    !39 ERROR: Stops before outputing uEMEP emission data because of NaNs
     
     
     

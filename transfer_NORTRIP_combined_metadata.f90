@@ -14,7 +14,11 @@
     
     allocate (EF_temp(num_veh,n_roadlinks))
     
-    !Set some of the parameters that are not read in yet
+ 	write(unit_logfile,'(A)') '================================================================'
+	write(unit_logfile,'(A)') 'Transfering preprocessor metadata to combined (transfer_preprocessor_to_combined_metadata)'
+	write(unit_logfile,'(A)') '================================================================' 
+
+   !Set some of the parameters that are not read in yet
     !write(*,*) n_roadlinks,n_save_links,n_save_road
     do i=1,n_roadlinks
         inputdata_int_rl(drivingcycle_rl_index,i)=1
@@ -26,6 +30,20 @@
         inputdata_rl(timedifference_rl_index,i)=DIFUTC_H
         inputdata_rl(windspeed_correction_rl_index,i)=wind_speed_correction
     enddo
+
+    !Overwrite the pavement type based on min and max ADT
+    if (n_road_pave_ADT_index.gt.0) then
+        do i=1,n_roadlinks
+        do j=1,n_road_pave_ADT_index
+            !write(*,*) i,j
+            if (inputdata_rl(adt_rl_index,i).ge.road_type_pave_flag_input(road_pave_min_ADT_index,j).and.inputdata_rl(adt_rl_index,i).lt.road_type_pave_flag_input(road_pave_max_ADT_index,j)) then
+                !write(*,*) road_pave_ADT_flag_index,road_type_pave_flag_input(road_pave_ADT_flag_index,j)
+                inputdata_int_rl(pavementtype_rl_index,i)=road_type_pave_flag_input(road_pave_ADT_flag_index,j)
+            endif
+        enddo
+        !write(*,*) i,inputdata_rl(adt_rl_index,i),inputdata_int_rl(pavementtype_rl_index,i)
+        enddo
+    endif
 
     !Write data that is used by all road links first
     transfer_n_roads=n_save_links
@@ -202,6 +220,104 @@
     
     !Date strings are not written by NORTRIP_multiroad to the metadata file
     
+    !Transfer all the activity data, which has now become a form of metadata because it is specified for each road seperately
+    allocate (transfer_salting_hour(2,0:transfer_n_roads))
+    allocate (transfer_delay_salting_day(0:transfer_n_roads))
+    allocate (transfer_check_salting_day(0:transfer_n_roads))
+    allocate (transfer_min_temp_salt(0:transfer_n_roads))
+    allocate (transfer_max_temp_salt(0:transfer_n_roads))
+    allocate (transfer_precip_rule_salt(0:transfer_n_roads))
+    allocate (transfer_RH_rule_salt(0:transfer_n_roads))
+    allocate (transfer_g_salting_rule(0:transfer_n_roads))
+    allocate (transfer_salt_mass(0:transfer_n_roads)) 
+    allocate (transfer_salt_dilution(0:transfer_n_roads)) 
+    allocate (transfer_salt_type_distribution(0:transfer_n_roads)) 
+    
+    allocate (transfer_sanding_hour(2,0:transfer_n_roads))
+    allocate (transfer_delay_sanding_day(0:transfer_n_roads)) 
+    allocate (transfer_check_sanding_day(0:transfer_n_roads))
+    allocate (transfer_min_temp_sand(0:transfer_n_roads)) 
+    allocate (transfer_max_temp_sand(0:transfer_n_roads))
+    allocate (transfer_precip_rule_sand(0:transfer_n_roads))
+    allocate (transfer_RH_rule_sand(0:transfer_n_roads)) 
+    allocate (transfer_g_sanding_rule(0:transfer_n_roads)) 
+    allocate (transfer_sand_mass(0:transfer_n_roads)) 
+    allocate (transfer_sand_dilution(0:transfer_n_roads))
+    
+    allocate (transfer_delay_ploughing_hour(0:transfer_n_roads))
+    allocate (transfer_ploughing_thresh_2(0:transfer_n_roads)) 
+
+    allocate (transfer_cleaning_hour(2,0:transfer_n_roads))
+    allocate (transfer_delay_cleaning_day(0:transfer_n_roads))
+    allocate (transfer_min_temp_cleaning(0:transfer_n_roads))
+    allocate (transfer_clean_with_salting(0:transfer_n_roads))
+    allocate (transfer_start_month_cleaning(0:transfer_n_roads))
+    allocate (transfer_end_month_cleaning(0:transfer_n_roads))
+    allocate (transfer_wetting_with_cleaning(0:transfer_n_roads))
+    allocate (transfer_efficiency_of_cleaning(0:transfer_n_roads))
+
+    allocate (transfer_binding_hour(2,0:transfer_n_roads))
+    allocate (transfer_delay_binding_day(0:transfer_n_roads))
+    allocate (transfer_check_binding_day(0:transfer_n_roads))
+    allocate (transfer_min_temp_binding(0:transfer_n_roads))
+    allocate (transfer_max_temp_binding(0:transfer_n_roads))
+    allocate (transfer_precip_rule_binding(0:transfer_n_roads))
+    allocate (transfer_RH_rule_binding(0:transfer_n_roads))
+    allocate (transfer_g_binding_rule(0:transfer_n_roads))
+    allocate (transfer_binding_mass(0:transfer_n_roads))
+    allocate (transfer_binding_dilution(0:transfer_n_roads))
+    allocate (transfer_start_month_binding(0:transfer_n_roads))
+    allocate (transfer_end_month_binding(0:transfer_n_roads))
+    
+    transfer_read_auto_activity_data=multi_read_auto_activity_data
+
+    transfer_salting_hour=multi_salting_hour
+    transfer_delay_salting_day=multi_delay_salting_day
+    transfer_check_salting_day=multi_check_salting_day
+    transfer_min_temp_salt=multi_min_temp_salt
+    transfer_max_temp_salt=multi_max_temp_salt
+    transfer_precip_rule_salt=multi_precip_rule_salt
+    transfer_RH_rule_salt=multi_RH_rule_salt
+    transfer_g_salting_rule=multi_g_salting_rule
+    transfer_salt_mass=multi_salt_mass
+    transfer_salt_dilution=multi_salt_dilution 
+    transfer_salt_type_distribution=multi_salt_type_distribution 
+    
+    transfer_sanding_hour=multi_sanding_hour
+    transfer_delay_sanding_day=multi_delay_sanding_day 
+    transfer_check_sanding_day=multi_check_sanding_day
+    transfer_min_temp_sand=multi_min_temp_sand 
+    transfer_max_temp_sand=multi_max_temp_sand
+    transfer_precip_rule_sand=multi_precip_rule_sand
+    transfer_RH_rule_sand=multi_RH_rule_sand 
+    transfer_g_sanding_rule=multi_g_sanding_rule 
+    transfer_sand_mass=multi_sand_mass 
+    transfer_sand_dilution=multi_sand_dilution
+    
+    transfer_delay_ploughing_hour=multi_delay_ploughing_hour
+    transfer_ploughing_thresh_2=multi_ploughing_thresh_2 
+
+    transfer_cleaning_hour=multi_cleaning_hour
+    transfer_delay_cleaning_day=multi_delay_cleaning_day
+    transfer_min_temp_cleaning=multi_min_temp_cleaning
+    transfer_clean_with_salting=multi_clean_with_salting
+    transfer_start_month_cleaning=multi_start_month_cleaning
+    transfer_end_month_cleaning=multi_end_month_cleaning
+    transfer_wetting_with_cleaning=multi_wetting_with_cleaning
+    transfer_efficiency_of_cleaning=multi_efficiency_of_cleaning
+
+    transfer_binding_hour=multi_binding_hour
+    transfer_delay_binding_day=multi_delay_binding_day
+    transfer_check_binding_day=multi_check_binding_day
+    transfer_min_temp_binding=multi_min_temp_binding
+    transfer_max_temp_binding=multi_max_temp_binding
+    transfer_precip_rule_binding=multi_precip_rule_binding
+    transfer_RH_rule_binding=multi_RH_rule_binding
+    transfer_g_binding_rule=multi_g_binding_rule
+    transfer_binding_mass=multi_binding_mass
+    transfer_binding_dilution=multi_binding_dilution
+    transfer_start_month_binding=multi_start_month_binding
+    transfer_end_month_binding=multi_end_month_binding
 
     end subroutine transfer_preprocessor_to_combined_metadata
 
@@ -213,6 +329,10 @@
     implicit none
     
     integer :: i_road=1
+
+ 	write(unit_logfile,'(A)') '================================================================'
+	write(unit_logfile,'(A)') 'Transfering combined metadata to NORTRIP (transfer_combined_to_NORTRIP_metadata)'
+	write(unit_logfile,'(A)') '================================================================' 
 
     !Write data that is used by all road links first
     n_roads=transfer_n_roads
@@ -342,6 +462,7 @@
     road_type_activity_flag(road_type_ploughing_index,:)=transfer_road_type_activity_flag(transfer_road_type_ploughing_index,:)
     road_type_activity_flag(road_type_cleaning_index,:)=transfer_road_type_activity_flag(transfer_road_type_cleaning_index,:)
 
+    
     !Note start and end dates are not read.Runs and saves for the input data period
     
     n_skyview=transfer_n_skyview
@@ -442,4 +563,103 @@
     if (allocated(transfer_az_skyview)) deallocate (transfer_az_skyview)
     if (allocated(transfer_zen_skyview)) deallocate (transfer_zen_skyview)
 
+    
+    !Allocate the auto_activity parameters
+    allocate (salting_hour(2,0:n_roads))
+    allocate (delay_salting_day(0:n_roads))
+    allocate (check_salting_day(0:n_roads))
+    allocate (min_temp_salt(0:n_roads))
+    allocate (max_temp_salt(0:n_roads))
+    allocate (precip_rule_salt(0:n_roads))
+    allocate (RH_rule_salt(0:n_roads))
+    allocate (g_salting_rule(0:n_roads))
+    allocate (salt_mass(0:n_roads)) 
+    allocate (salt_dilution(0:n_roads)) 
+    allocate (salt_type_distribution(0:n_roads)) 
+    
+    allocate (sanding_hour(2,0:n_roads))
+    allocate (delay_sanding_day(0:n_roads)) 
+    allocate (check_sanding_day(0:n_roads))
+    allocate (min_temp_sand(0:n_roads)) 
+    allocate (max_temp_sand(0:n_roads))
+    allocate (precip_rule_sand(0:n_roads))
+    allocate (RH_rule_sand(0:n_roads)) 
+    allocate (g_sanding_rule(0:n_roads)) 
+    allocate (sand_mass(0:n_roads)) 
+    allocate (sand_dilution(0:n_roads))
+    
+    allocate (delay_ploughing_hour(0:n_roads))
+    allocate (ploughing_thresh_2(0:n_roads)) 
+    allocate (cleaning_hour(2,0:n_roads))
+    allocate (delay_cleaning_day(0:n_roads))
+    allocate (min_temp_cleaning(0:n_roads))
+    allocate (clean_with_salting(0:n_roads))
+    allocate (start_month_cleaning(0:n_roads))
+    allocate (end_month_cleaning(0:n_roads))
+    allocate (wetting_with_cleaning(0:n_roads))
+    allocate (efficiency_of_cleaning(0:n_roads))
+
+    allocate (binding_hour(2,0:n_roads))
+    allocate (delay_binding_day(0:n_roads))
+    allocate (check_binding_day(0:n_roads))
+    allocate (min_temp_binding(0:n_roads))
+    allocate (max_temp_binding(0:n_roads))
+    allocate (precip_rule_binding(0:n_roads))
+    allocate (RH_rule_binding(0:n_roads))
+    allocate (g_binding_rule(0:n_roads))
+    allocate (binding_mass(0:n_roads))
+    allocate (binding_dilution(0:n_roads))
+    allocate (start_month_binding(0:n_roads))
+    allocate (end_month_binding(0:n_roads))
+    
+    read_auto_activity_data=transfer_read_auto_activity_data
+
+    salting_hour=transfer_salting_hour
+    delay_salting_day=transfer_delay_salting_day
+    check_salting_day=transfer_check_salting_day
+    min_temp_salt=transfer_min_temp_salt
+    max_temp_salt=transfer_max_temp_salt
+    precip_rule_salt=transfer_precip_rule_salt
+    RH_rule_salt=transfer_RH_rule_salt
+    g_salting_rule=transfer_g_salting_rule
+    salt_mass=transfer_salt_mass
+    salt_dilution=transfer_salt_dilution 
+    salt_type_distribution=transfer_salt_type_distribution 
+    
+    sanding_hour=transfer_sanding_hour
+    delay_sanding_day=transfer_delay_sanding_day 
+    check_sanding_day=transfer_check_sanding_day
+    min_temp_sand=transfer_min_temp_sand 
+    max_temp_sand=transfer_max_temp_sand
+    precip_rule_sand=transfer_precip_rule_sand
+    RH_rule_sand=transfer_RH_rule_sand 
+    g_sanding_rule=transfer_g_sanding_rule 
+    sand_mass=transfer_sand_mass 
+    sand_dilution=transfer_sand_dilution
+    
+    delay_ploughing_hour=transfer_delay_ploughing_hour
+    ploughing_thresh_2=transfer_ploughing_thresh_2 
+
+    cleaning_hour=transfer_cleaning_hour
+    delay_cleaning_day=transfer_delay_cleaning_day
+    min_temp_cleaning=transfer_min_temp_cleaning
+    clean_with_salting=transfer_clean_with_salting
+    start_month_cleaning=transfer_start_month_cleaning
+    end_month_cleaning=transfer_end_month_cleaning
+    wetting_with_cleaning=transfer_wetting_with_cleaning
+    efficiency_of_cleaning=transfer_efficiency_of_cleaning
+
+    binding_hour=transfer_binding_hour
+    delay_binding_day=transfer_delay_binding_day
+    check_binding_day=transfer_check_binding_day
+    min_temp_binding=transfer_min_temp_binding
+    max_temp_binding=transfer_max_temp_binding
+    precip_rule_binding=transfer_precip_rule_binding
+    RH_rule_binding=transfer_RH_rule_binding
+    g_binding_rule=transfer_g_binding_rule
+    binding_mass=transfer_binding_mass
+    binding_dilution=transfer_binding_dilution
+    start_month_binding=transfer_start_month_binding
+    end_month_binding=transfer_end_month_binding
+    
     end subroutine transfer_combined_to_NORTRIP_metadata

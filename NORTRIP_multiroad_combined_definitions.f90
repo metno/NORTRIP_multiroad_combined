@@ -209,4 +209,58 @@
     real, allocatable :: transfer_snow_road(:)
     real, allocatable :: transfer_ice_road(:)
 
+!Transfer activity data
+!-----------------------------------------------------------------------
+
+    !Auto activity data
+    real, allocatable :: transfer_salting_hour(:,:)
+    real, allocatable :: transfer_delay_salting_day(:)
+    real, allocatable :: transfer_check_salting_day(:)
+    real, allocatable :: transfer_min_temp_salt(:) 
+    real, allocatable :: transfer_max_temp_salt(:)
+    real, allocatable :: transfer_precip_rule_salt(:)
+    real, allocatable :: transfer_RH_rule_salt(:) 
+    real, allocatable :: transfer_g_salting_rule(:)
+    real, allocatable :: transfer_salt_mass(:) 
+    real, allocatable :: transfer_salt_dilution(:) 
+    real, allocatable :: transfer_salt_type_distribution(:) 
+    
+    real, allocatable :: transfer_sanding_hour(:,:)
+    real, allocatable :: transfer_delay_sanding_day(:) 
+    real, allocatable :: transfer_check_sanding_day(:)
+    real, allocatable :: transfer_min_temp_sand(:) 
+    real, allocatable :: transfer_max_temp_sand(:)
+    real, allocatable :: transfer_precip_rule_sand(:)
+    real, allocatable :: transfer_RH_rule_sand(:) 
+    real, allocatable :: transfer_g_sanding_rule(:) 
+    real, allocatable :: transfer_sand_mass(:) 
+    real, allocatable :: transfer_sand_dilution(:)
+    
+    real, allocatable :: transfer_delay_ploughing_hour(:)
+    real, allocatable :: transfer_ploughing_thresh_2(:) 
+
+    real, allocatable :: transfer_cleaning_hour(:,:)
+    real, allocatable :: transfer_delay_cleaning_day(:)
+    real, allocatable :: transfer_min_temp_cleaning(:)
+    integer, allocatable :: transfer_clean_with_salting(:)
+    real, allocatable :: transfer_start_month_cleaning(:)
+    real, allocatable :: transfer_end_month_cleaning(:)
+    real, allocatable :: transfer_wetting_with_cleaning(:)
+    real, allocatable :: transfer_efficiency_of_cleaning(:)
+
+    real, allocatable :: transfer_binding_hour(:,:)
+    real, allocatable :: transfer_delay_binding_day(:)
+    real, allocatable :: transfer_check_binding_day(:)
+    real, allocatable :: transfer_min_temp_binding(:)
+    real, allocatable :: transfer_max_temp_binding(:)
+    real, allocatable :: transfer_precip_rule_binding(:)
+    real, allocatable :: transfer_RH_rule_binding(:)
+    real, allocatable :: transfer_g_binding_rule(:)
+    real, allocatable :: transfer_binding_mass(:)
+    real, allocatable :: transfer_binding_dilution(:)
+    real, allocatable :: transfer_start_month_binding(:)
+    real, allocatable :: transfer_end_month_binding(:)
+
+    logical :: transfer_read_auto_activity_data=.false.
+
     end module

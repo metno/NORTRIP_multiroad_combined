@@ -8,6 +8,10 @@
     integer i,t,jj
     integer unit_in
     
+ 	write(unit_logfile,'(A)') '================================================================'
+	write(unit_logfile,'(A)') 'Transfering preprocessed meteodata to combined (transfer_preprocessor_to_combined_meteodata)'
+	write(unit_logfile,'(A)') '================================================================' 
+
     if (.not.allocated(transfer_meteo_data)) allocate(transfer_meteo_data(transfer_num_meteo_index,transfer_n_time,0:transfer_n_roads))
 
     !pathfilename_meteo=trim(pathname_meteo)//trim(filename_meteo)
@@ -69,6 +73,10 @@
     
     if (.not.allocated(meteo_data)) allocate(meteo_data(num_meteo_index,n_time,0:n_roads))
     
+  	write(unit_logfile,'(A)') '================================================================'
+	write(unit_logfile,'(A)') 'Transfering combined meteodata to NORTRIP (transfer_combined_to_NORTRIP_meteodata)'
+	write(unit_logfile,'(A)') '================================================================' 
+
     meteo_data=transfer_meteo_data
     available_meteo_data=transfer_available_meteo_data
     

@@ -46,7 +46,7 @@ subroutine transfer_preprocessor_to_combined_initialdata
         speed_factor=max(1.+(50.-traffic_data(V_li_index,1,i))/50.,0.2)
         adt_factor=min(inputdata_rl(adt_rl_index,i)/inputdata_int_rl(nlanes_rl_index,i)/20000.*4.,5.)
         M2_dust_road(i)=200.*month_scale(date_data(month_index,1))*max_stud_fraction(li)/100.*adt_factor*speed_factor
-        if (inputdata_int_rl(roadactivitytype_rl_index,i).eq.tunnel_roadtype) then
+        if (inputdata_int_rl(roadstructuretype_rl_index,i).eq.tunnel_roadtype) then
             M2_dust_road(i)=0.
         endif
     enddo
@@ -58,13 +58,15 @@ subroutine transfer_preprocessor_to_combined_initialdata
     write(unit_logfile,'(a,2f12.1)') ' Maximum and minimum initial dust layer',maxval(M2_dust_road),minval(M2_dust_road)
 
     !write(unit_in,'(a32,a,<n_save_links>f12.4)') 'Road index',achar(9),inputdata_int_rl(roadindex_rl_index,save_links(1:n_save_links))
-    transfer_M2_dust_road=M2_dust_road(save_links(1:n_save_links))
-    transfer_M2_sand_road=M2_sand_road(save_links(1:n_save_links))
-    transfer_M2_salt_road_1=M2_salt_road_1(save_links(1:n_save_links))
-    transfer_M2_salt_road_2=M2_salt_road_2(save_links(1:n_save_links))
-    transfer_water_road=water_road(save_links(1:n_save_links))
-    transfer_snow_road=snow_road(save_links(1:n_save_links))
-    transfer_ice_road=ice_road(save_links(1:n_save_links))
+    do i=1,n_save_links
+        transfer_M2_dust_road(i)=M2_dust_road(save_links(i))
+        transfer_M2_sand_road(i)=M2_sand_road(save_links(i))
+        transfer_M2_salt_road_1(i)=M2_salt_road_1(save_links(i))
+        transfer_M2_salt_road_2(i)=M2_salt_road_2(save_links(i))
+        transfer_water_road(i)=water_road(save_links(i))
+        transfer_snow_road(i)=snow_road(save_links(i))
+        transfer_ice_road(i)=ice_road(save_links(i))
+    enddo
     transfer_long_rad_in_offset=long_rad_in_offset
     transfer_RH_offset=RH_offset
     transfer_T_a_offset=T_a_offset
