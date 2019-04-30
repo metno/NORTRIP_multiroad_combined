@@ -180,7 +180,7 @@
     if (n_road_type_flag_index.gt.0) then        
         !Allocate the road type activity data to the roads
         do i=1,n_roadlinks
-            if (inputdata_int_rl(roadactivitytype_rl_index,i).gt.0.and.inputdata_int_rl(roadactivitytype_rl_index,i).lt.num_max_road_types) then
+            if (inputdata_int_rl(roadactivitytype_rl_index,i).gt.0.and.inputdata_int_rl(roadactivitytype_rl_index,i).le.num_max_road_types) then
                 road_type_activity_flag_roads(:,i)=road_type_activity_flag(:,inputdata_int_rl(roadactivitytype_rl_index,i))
             else
                 road_type_activity_flag_roads(:,i)=1
