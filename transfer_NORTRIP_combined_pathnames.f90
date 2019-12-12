@@ -41,6 +41,7 @@
     transfer_path_fortran=path_fortran
     transfer_path_fortran_output=path_fortran_output
 
+    transfer_finished_file_append=multi_finished_file_append
     
     end subroutine transfer_preprocessor_to_combined_pathnames
     
@@ -95,5 +96,6 @@
     path_fortran=transfer_path_fortran
     path_fortran_output=transfer_path_fortran_output
 
-    
+    finished_file_append=transfer_finished_file_append
+
     end subroutine transfer_combined_to_NORTRIP_pathnames

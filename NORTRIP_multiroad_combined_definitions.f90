@@ -262,5 +262,7 @@
     real, allocatable :: transfer_end_month_binding(:)
 
     logical :: transfer_read_auto_activity_data=.false.
+    
+    character(256) :: transfer_finished_file_append=''
 
     end module
