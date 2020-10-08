@@ -202,7 +202,7 @@
         do i=1,n_skyview
             transfer_az_skyview(i,1:transfer_n_roads)=360/transfer_n_skyview*(i-1)
         enddo
-        transfer_zen_skyview(:,1:transfer_n_roads)=zen_skyview(:,:)
+        transfer_zen_skyview(:,1:transfer_n_roads)=zen_skyview(:,save_links(1:n_save_links))
     endif
 
     !Set road width based on lane width

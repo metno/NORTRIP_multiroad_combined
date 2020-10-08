@@ -30,17 +30,17 @@ subroutine transfer_preprocessor_to_combined_trafficdata
             .or.(use_only_special_links_flag.eq.0).or.(use_only_special_links_flag.eq.2)) then
             do t=1,n_hours_input
                     
-                transfer_traffic_data(transfer_N_total_index,t,i)=traffic_data(N_total_index,t,i)
-                transfer_traffic_data(transfer_N_v_index(transfer_he),t,i)=traffic_data(N_v_index(he),t,i)
-                transfer_traffic_data(transfer_N_v_index(transfer_li),t,i)=traffic_data(N_v_index(li),t,i)
-                transfer_traffic_data(transfer_N_t_v_index(transfer_st,transfer_he),t,i)=traffic_data(N_t_v_index(st,he),t,i)
-                transfer_traffic_data(transfer_N_t_v_index(transfer_st,transfer_li),t,i)=traffic_data(N_t_v_index(st,li),t,i)
-                transfer_traffic_data(transfer_N_t_v_index(transfer_wi,transfer_he),t,i)=traffic_data(N_t_v_index(wi,he),t,i)
-                transfer_traffic_data(transfer_N_t_v_index(transfer_wi,transfer_li),t,i)=traffic_data(N_t_v_index(wi,li),t,i)
-                transfer_traffic_data(transfer_N_t_v_index(transfer_su,transfer_he),t,i)=traffic_data(N_t_v_index(su,he),t,i)
-                transfer_traffic_data(transfer_N_t_v_index(transfer_su,transfer_li),t,i)=traffic_data(N_t_v_index(su,li),t,i)
-                transfer_traffic_data(transfer_V_he_index,t,i)=traffic_data(V_he_index,t,i)
-                transfer_traffic_data(transfer_V_li_index,t,i)=traffic_data(V_li_index,t,i)
+                transfer_traffic_data(transfer_N_total_index,t,jj)=traffic_data(N_total_index,t,i)
+                transfer_traffic_data(transfer_N_v_index(transfer_he),t,jj)=traffic_data(N_v_index(he),t,i)
+                transfer_traffic_data(transfer_N_v_index(transfer_li),t,jj)=traffic_data(N_v_index(li),t,i)
+                transfer_traffic_data(transfer_N_t_v_index(transfer_st,transfer_he),t,jj)=traffic_data(N_t_v_index(st,he),t,i)
+                transfer_traffic_data(transfer_N_t_v_index(transfer_st,transfer_li),t,jj)=traffic_data(N_t_v_index(st,li),t,i)
+                transfer_traffic_data(transfer_N_t_v_index(transfer_wi,transfer_he),t,jj)=traffic_data(N_t_v_index(wi,he),t,i)
+                transfer_traffic_data(transfer_N_t_v_index(transfer_wi,transfer_li),t,jj)=traffic_data(N_t_v_index(wi,li),t,i)
+                transfer_traffic_data(transfer_N_t_v_index(transfer_su,transfer_he),t,jj)=traffic_data(N_t_v_index(su,he),t,i)
+                transfer_traffic_data(transfer_N_t_v_index(transfer_su,transfer_li),t,jj)=traffic_data(N_t_v_index(su,li),t,i)
+                transfer_traffic_data(transfer_V_he_index,t,jj)=traffic_data(V_he_index,t,i)
+                transfer_traffic_data(transfer_V_li_index,t,jj)=traffic_data(V_li_index,t,i)
         
                 !write(*,*) jj,i,t,transfer_traffic_data(transfer_N_total_index,t,i)
             enddo

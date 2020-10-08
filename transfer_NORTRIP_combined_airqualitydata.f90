@@ -44,10 +44,10 @@ subroutine transfer_preprocessor_to_combined_airqualitydata
         
             do t=1,n_hours_input
                 
-                transfer_airquality_data(:,t,i)=transfer_nodata      
-                transfer_airquality_data(transfer_EP_emis_index,t,i)=airquality_data(EP_emis_index,t,i)*conversion
-                transfer_airquality_data(transfer_NOX_emis_index,t,i)=airquality_data(NOX_emis_index,t,i)*conversion
-                transfer_airquality_data(transfer_f_conc_index,t,i)=airquality_data(f_conc_index,t,i)        
+                transfer_airquality_data(:,t,jj)=transfer_nodata      
+                transfer_airquality_data(transfer_EP_emis_index,t,jj)=airquality_data(EP_emis_index,t,i)*conversion
+                transfer_airquality_data(transfer_NOX_emis_index,t,jj)=airquality_data(NOX_emis_index,t,i)*conversion
+                transfer_airquality_data(transfer_f_conc_index,t,jj)=airquality_data(f_conc_index,t,i)        
 
             enddo
         endif

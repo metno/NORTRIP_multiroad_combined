@@ -24,13 +24,13 @@ subroutine transfer_preprocessor_to_combined_initialdata
     allocate (snow_road(n_roadlinks))
     allocate (ice_road(n_roadlinks))
 
-    allocate (transfer_M2_dust_road(n_roadlinks))
-    allocate (transfer_M2_sand_road(n_roadlinks))
-    allocate (transfer_M2_salt_road_1(n_roadlinks))
-    allocate (transfer_M2_salt_road_2(n_roadlinks))
-    allocate (transfer_water_road(n_roadlinks))
-    allocate (transfer_snow_road(n_roadlinks))
-    allocate (transfer_ice_road(n_roadlinks))
+    allocate (transfer_M2_dust_road(transfer_n_roads))
+    allocate (transfer_M2_sand_road(transfer_n_roads))
+    allocate (transfer_M2_salt_road_1(transfer_n_roads))
+    allocate (transfer_M2_salt_road_2(transfer_n_roads))
+    allocate (transfer_water_road(transfer_n_roads))
+    allocate (transfer_snow_road(transfer_n_roads))
+    allocate (transfer_ice_road(transfer_n_roads))
 
     M2_dust_road=5.00  !        	(g/m2)  
     M2_sand_road=0.00!        	(g/m2)      
@@ -40,6 +40,7 @@ subroutine transfer_preprocessor_to_combined_initialdata
     snow_road=0.00!        	(mm.w.e)    
     ice_road=0.00!        	(mm.w.e)    
     
+    !write(*,*) 'n_roadlinks=',n_roadlinks
     !Calculate road dust according to the monthly distribution for each road. Assumes the speed is the same throughout    
     do jj=1,n_save_links
         i=save_links(jj)
@@ -111,13 +112,15 @@ subroutine transfer_combined_to_NORTRIP_initialdata
         g_road_init=0.0
     endif
     
-    M_road_init_temp(road_index,1:n_roads)=transfer_M2_dust_road
-    M_road_init_temp(sand_index,1:n_roads)=transfer_M2_sand_road
-    M_road_init_temp(salt_index(1),1:n_roads)=transfer_M2_salt_road_1
-    M_road_init_temp(salt_index(2),1:n_roads)=transfer_M2_salt_road_2
-    g_road_init(water_index,1,1:n_roads)=transfer_water_road
-    g_road_init(snow_index,1,1:n_roads)=transfer_snow_road
-    g_road_init(ice_index,1,1:n_roads)=transfer_ice_road
+    write(*,*) n_roads,transfer_n_roads
+    
+    M_road_init_temp(road_index,1:n_roads)=transfer_M2_dust_road(1:transfer_n_roads)
+    M_road_init_temp(sand_index,1:n_roads)=transfer_M2_sand_road(1:transfer_n_roads)
+    M_road_init_temp(salt_index(1),1:n_roads)=transfer_M2_salt_road_1(1:transfer_n_roads)
+    M_road_init_temp(salt_index(2),1:n_roads)=transfer_M2_salt_road_2(1:transfer_n_roads)
+    g_road_init(water_index,1,1:n_roads)=transfer_water_road(1:transfer_n_roads)
+    g_road_init(snow_index,1,1:n_roads)=transfer_snow_road(1:transfer_n_roads)
+    g_road_init(ice_index,1,1:n_roads)=transfer_ice_road(1:transfer_n_roads)
     long_rad_in_offset=transfer_long_rad_in_offset
     RH_offset=transfer_RH_offset
     T_a_offset=transfer_T_a_offset
