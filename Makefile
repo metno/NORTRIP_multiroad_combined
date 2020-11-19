@@ -11,7 +11,7 @@ F90FLAGS = -qopenmp -O3 -g -ftz $(shell nf-config --cflags)
 LLIB = $(shell nf-config --flibs) 
 LDFLAGS =  $(F90FLAGS) $(LLIB)
 
-PROG = NORTRIP_multiroad_combined_v1
+PROG = NORTRIP_multiroad_combined_v2-el7
 
 NILU_DIR = NORTRIP_multiroad/NILU
 NORTRIP_DIR = NORTRIP
