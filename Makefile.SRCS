@@ -12,6 +12,7 @@ SRCS =	\
 	transfer_NORTRIP_combined_meteodata.f90\
 	transfer_NORTRIP_combined_pathnames.f90\
 	transfer_NORTRIP_combined_trafficdata.f90\
+	transfer_preprocessor_to_combined_activitydata.f90\
 \
 	NORTRIP/NORTRIP_calc_radiation.f90\
 	NORTRIP/NORTRIP_concentrations.f90\
@@ -74,6 +75,7 @@ SRCS =	\
 	NORTRIP_multiroad/process_usgs_dem_data.f90\
 	NORTRIP_multiroad/read_esri_ascii_terrain_file.f90\
 	NORTRIP_multiroad/read_netcdf4_terrain_file.f90\
+	NORTRIP_multiroad/NORTRIP_multiroad_read_activity_data.f90\
 \
 	NORTRIP_multiroad/uEMEP/lambert_projection.f90\
 \
