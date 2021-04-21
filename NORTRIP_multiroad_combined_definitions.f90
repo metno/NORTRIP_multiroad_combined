@@ -76,9 +76,11 @@
 
     !Set extra date indexes for the activity file since this is not necessarilly in chronological order 
     integer transfer_activity_year_index,transfer_activity_month_index,transfer_activity_day_index,transfer_activity_hour_index,transfer_activity_minute_index
+    integer transfer_activity_roadID_index
     integer transfer_num_activity_input_index
     parameter (transfer_activity_year_index=8,transfer_activity_month_index=9,transfer_activity_day_index=10,transfer_activity_hour_index=11,transfer_activity_minute_index=12)
-    parameter (transfer_num_activity_input_index=12)
+    parameter (transfer_activity_roadID_index=13)
+    parameter (transfer_num_activity_input_index=13)
 
     logical :: transfer_available_date_data(transfer_num_date_index)=.false.
     logical :: transfer_available_traffic_data(transfer_num_traffic_index)=.false.
@@ -92,7 +94,7 @@
     real, allocatable :: transfer_traffic_data(:,:,:)
     real, allocatable :: transfer_meteo_data(:,:,:)
     real, allocatable :: transfer_airquality_data(:,:,:)
-    real, allocatable :: transfer_activity_data(:,:,:)
+    !real, allocatable :: transfer_activity_data(:,:,:)
     real, allocatable :: transfer_activity_input_data(:,:,:)
     
     !path and file names

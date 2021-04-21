@@ -56,10 +56,13 @@
     call transfer_preprocessor_to_combined_airqualitydata
     call transfer_combined_to_NORTRIP_airqualitydata
 
+    call transfer_preprocessor_to_combined_activitydata
+    call transfer_combined_to_NORTRIP_activitydata
+
     !Make a routine, like the ones above, for this but for now simply set all activity to 0 and say it is available
-    if (.not.allocated(activity_data)) allocate(activity_data(num_activity_index,n_time,0:n_roads))
-    activity_data=0.
-    available_activity_data=.true.
+    !if (.not.allocated(activity_data)) allocate(activity_data(num_activity_index,n_time,0:n_roads))
+    !activity_data=0.
+    !available_activity_data=.true.
     
     endif
     
