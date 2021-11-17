@@ -92,12 +92,32 @@ subroutine transfer_preprocessor_to_combined_activitydata
     transfer_activity_input_data=nodata_activity
     match_count=0
     
+        !First set to 0 any road that is mentioned at all, so it is no longer nodata_activity
+        do i_road=1,transfer_n_roads
+        do j=1,n_input_activity
+
+            if (inputdata_int_rl(id_rl_index,save_links(i_road)).eq.int(multi_activity_input_data(activity_roadID_index,j))) then
+                
+                !If a road is matched at all then it is assumed to have data all the time. Will be written over in the next time loop
+                transfer_activity_input_data(:,:,i_road)=0.
+                
+                match_link(i_road)=1
+
+            endif
+        enddo
+        enddo
+    
+        write(unit_logfile,'(A,5i)') 'Number of activity road links matched without valid dates: ',sum(match_link)
+
+        match_link=0
+
+        !Now put in data if a date is found
         do i_road=1,transfer_n_roads
         do j=1,n_input_activity
             match_found=.false.
 
             if (inputdata_int_rl(id_rl_index,save_links(i_road)).eq.int(multi_activity_input_data(activity_roadID_index,j))) then
-
+                
             do i=1,n_output_activity
                 !write(*,*)j,i,inputdata_int_rl(id_rl_index,save_links(i_road)),int(multi_activity_input_data(activity_roadID_index,j))
                 !Matches date and road ID. If no road ID has been read (nodata) then apply to all roads for that date
