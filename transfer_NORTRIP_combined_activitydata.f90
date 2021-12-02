@@ -135,6 +135,11 @@ subroutine transfer_preprocessor_to_combined_activitydata
                     match_found=.true.
                     match_link(i_road)=1
                     match_time(i)=1
+                            !if (multi_activity_input_data(activity_hour_index,j).eq.1.and.date_data(hour_index,i).eq.1.and.inputdata_int_rl(id_rl_index,save_links(i_road)).eq.699005) then
+                            !    write(*,*) 'First hour transferred: ',sum(multi_activity_input_data(:,j)),inputdata_int_rl(id_rl_index,save_links(i_road))
+                            !    write(*,*) multi_activity_input_data(activity_hour_index,j),j,date_data(hour_index,i),i
+                            !endif
+                            
                 endif             
             
             enddo
