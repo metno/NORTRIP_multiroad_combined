@@ -106,6 +106,7 @@
     character(256) transfer_path_outputdata
     character(256) transfer_filename_outputdata
     character(256) transfer_path_init
+    character(256) transfer_path_init_out
     character(256) transfer_filename_init
     character(256) transfer_path_output_emis
     character(256) transfer_filename_output_emis

@@ -14,6 +14,7 @@
     filename_inputdata=filename_NORTRIP_data
     filename_outputdata=filename_NORTRIP_template
     path_init=pathname_init_in
+    path_init_out=pathname_init_out
     filename_init=filename_init_in
     filename_output_roadmeteo=trim(filename_NORTRIP_template)//'_roadmeteo.txt'
     
@@ -29,6 +30,7 @@
     transfer_filename_outputdata=filename_outputdata
 
     transfer_path_init=path_init
+    transfer_path_init_out=path_init_out
     transfer_filename_init=filename_init
     transfer_path_output_emis=path_output_emis
     transfer_filename_output_emis=filename_output_emis
@@ -84,6 +86,7 @@
     filename_outputdata=transfer_filename_outputdata
 
     path_init=transfer_path_init
+    path_init_out=transfer_path_init_out
     filename_init=transfer_filename_init
     path_output_emis=transfer_path_output_emis
     filename_output_emis=transfer_filename_output_emis
