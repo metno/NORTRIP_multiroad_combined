@@ -489,17 +489,18 @@
         grid_road_data_flag=.false.
     endif
 
-    if (sum(exhaust_EF(:,0:n_roads)).eq.0) then
-        exhaust_EF_available=0
-    else
-        exhaust_EF_available=1
-    endif
+    !Commented out this as it is giving a debug error
+    !if (sum(exhaust_EF(:,0:n_roads)).eq.0) then
+    !    exhaust_EF_available=0
+    !else
+    !    exhaust_EF_available=1
+    !endif
 
-    if (sum(NOX_EF(:,0:n_roads)).eq.0) then
-        NOX_EF_available=0
-    else
-        NOX_EF_available=1
-    endif
+    !if (sum(NOX_EF(:,0:n_roads)).eq.0) then
+    !    NOX_EF_available=0
+    !else
+    !    NOX_EF_available=1
+    !endif
     
     !Set these two to 0 since the emissions are transferred through the time series data
     !Neither of these two emission factors have been defined I think
