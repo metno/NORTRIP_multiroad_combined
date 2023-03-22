@@ -489,13 +489,13 @@
         grid_road_data_flag=.false.
     endif
 
-    if (sum(exhaust_EF(:,i_road)).eq.0) then
+    if (sum(exhaust_EF(:,0:n_roads)).eq.0) then
         exhaust_EF_available=0
     else
         exhaust_EF_available=1
     endif
 
-    if (sum(NOX_EF(:,i_road)).eq.0) then
+    if (sum(NOX_EF(:,0:n_roads)).eq.0) then
         NOX_EF_available=0
     else
         NOX_EF_available=1
