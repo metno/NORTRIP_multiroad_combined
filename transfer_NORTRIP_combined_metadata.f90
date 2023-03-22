@@ -155,15 +155,15 @@
 
     
     !If no exhaust emission data read in then set the exhaust emission factors for NORTRIP
-    if (sum(airquality_data(EP_emis_index,:,1:transfer_n_roads)).eq.0.and.exhaust_EF(he).gt.0.and.exhaust_EF(li).gt.0) then
-        EF_temp(li,1:transfer_n_roads)=exhaust_EF(li)
-        EF_temp(he,1:transfer_n_roads)=exhaust_EF(he)
+    if (sum(airquality_data(EP_emis_index,:,1:transfer_n_roads)).eq.0.and.in_exhaust_EF(he).gt.0.and.in_exhaust_EF(li).gt.0) then
+        EF_temp(li,1:transfer_n_roads)=in_exhaust_EF(li)
+        EF_temp(he,1:transfer_n_roads)=in_exhaust_EF(he)
         transfer_exhaust_EF(he,1:transfer_n_roads)=EF_temp(he,1:n_save_links)
         transfer_exhaust_EF(li,1:transfer_n_roads)=EF_temp(li,1:n_save_links)
     endif       
-    if (sum(airquality_data(NOX_emis_index,:,1:transfer_n_roads)).eq.0.and.nox_EF(he).gt.0.and.nox_EF(li).gt.0) then
-        EF_temp(li,1:transfer_n_roads)=nox_EF(li)
-        EF_temp(he,1:transfer_n_roads)=nox_EF(he)
+    if (sum(airquality_data(NOX_emis_index,:,1:transfer_n_roads)).eq.0.and.in_nox_EF(he).gt.0.and.in_nox_EF(li).gt.0) then
+        EF_temp(li,1:transfer_n_roads)=in_nox_EF(li)
+        EF_temp(he,1:transfer_n_roads)=in_nox_EF(he)
         transfer_NOX_EF(he,1:transfer_n_roads)=EF_temp(he,1:n_save_links)
         transfer_NOX_EF(li,1:transfer_n_roads)=EF_temp(li,1:n_save_links)
     endif       
