@@ -136,7 +136,8 @@ subroutine transfer_combined_to_NORTRIP_initialdata
     !enddo
     enddo
     enddo
-    write(unit_logfile,'(a,1f12.1)') ' Maximum initial dust layer transferred',maxval(M_road_init(road_index,pm_all,1,:)/b_road_lanes(:)/1000.)
+    !Comented out this line because it causes a debug failure
+    !write(unit_logfile,'(a,1f12.1)') ' Maximum initial dust layer transferred',maxval(M_road_init(road_index,pm_all,1,:)/b_road_lanes(:)/1000.)
      
     do ro=1,n_roads
     do m=1,num_moisture
