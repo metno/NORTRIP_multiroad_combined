@@ -6,12 +6,15 @@ include Makefile.SRCS
 F90 = ifort
 DEBUG_FLAGS = -init=snan,arrays -check all -check noarg_temp_created -debug-parameters all \
               -traceback -ftrapuv -g -fpe0 -O0
-F90FLAGS = -qopenmp -O3 -g -ftz $(shell nf-config --cflags)
+#F90FLAGS = -qopenmp -O3 -r8 -g -ftz $(shell nf-config --cflags)
+#F90FLAGS = -O3 -r8 -g -ftz $(shell nf-config --fflags)
+F90FLAGS = -O3 -g -ftz $(shell nf-config --fflags)
 
 LLIB = $(shell nf-config --flibs) 
 LDFLAGS =  $(F90FLAGS) $(LLIB)
 
-PROG = NORTRIP_multiroad_combined_v2-el7
+#PROG = NORTRIP_multiroad_combined_v2-el7
+PROG = NORTRIP_multiroad_combined_v2-r8
 
 NILU_DIR = NORTRIP_multiroad/NILU
 NORTRIP_DIR = NORTRIP
