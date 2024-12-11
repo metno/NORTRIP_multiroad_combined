@@ -29,7 +29,7 @@ subroutine transfer_preprocessor_to_combined_airqualitydata
     !Conversion of g/s/m to g/km/hr
     if (index(calculation_type,'episode')) then
         conversion=1000.*3600.
-    elseif (index(calculation_type,'road weather').gt.0.or.index(calculation_type,'uEMEP').gt.0.or.index(calculation_type,'Avinor').gt.0) then
+    elseif (index(calculation_type,'road weather').gt.0.or.index(calculation_type,'uEMEP').gt.0.or.index(calculation_type,'Avinor').gt.0.or.index(calculation_type,'gridded').gt.0) then
         !Does not read in dynamic data
         conversion=1.
     else

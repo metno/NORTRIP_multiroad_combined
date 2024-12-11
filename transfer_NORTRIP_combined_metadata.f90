@@ -113,6 +113,8 @@
     if (.not.allocated(transfer_y_road)) allocate (transfer_y_road(2,0:transfer_n_roads))
     if (.not.allocated(transfer_length_road)) allocate (transfer_length_road(0:transfer_n_roads))
     if (.not.allocated(transfer_line_or_grid_data_flag)) allocate (transfer_line_or_grid_data_flag(0:transfer_n_roads))
+    if (.not.allocated(transfer_lon_road)) allocate (transfer_lon_road(2,0:transfer_n_roads))
+    if (.not.allocated(transfer_lat_road)) allocate (transfer_lat_road(2,0:transfer_n_roads))
     !if (.not.allocated(adt_road)) allocate (adt_road(0:n_roads))
     
     !Road type actvity factors
@@ -175,6 +177,10 @@
         transfer_y_road(2,1:transfer_n_roads)=inputdata_rl(y2_rl_index,save_links(1:n_save_links))
         transfer_length_road(1:transfer_n_roads)=inputdata_rl(length_rl_index,save_links(1:n_save_links))
         transfer_line_or_grid_data_flag(1:transfer_n_roads)=inputdata_int_rl(griddata_rl_index,save_links(1:n_save_links))
+        transfer_lon_road(1,1:transfer_n_roads)=inputdata_rl(lon1_rl_index,save_links(1:n_save_links))
+        transfer_lat_road(1,1:transfer_n_roads)=inputdata_rl(lat1_rl_index,save_links(1:n_save_links))
+        transfer_lon_road(2,1:transfer_n_roads)=inputdata_rl(lon2_rl_index,save_links(1:n_save_links))
+        transfer_lat_road(2,1:transfer_n_roads)=inputdata_rl(lat2_rl_index,save_links(1:n_save_links))
     endif
 
     if (n_road_type_flag_index.gt.0) then        
@@ -349,9 +355,9 @@
     grid_0(2)=transfer_grid_0(2)
     grid_dim(1)=transfer_grid_dim(1)
     grid_dim(2)=transfer_grid_dim(2)
-    grid_dim(1)=transfer_grid_dim(1)
-    grid_dim(2)=transfer_grid_dim(2)
-
+    grid_delta(1)=transfer_grid_delta(1)
+    grid_delta(2)=transfer_grid_delta(2)
+    
     !Allocate and initialise arrays for road metadata
     if (.not.allocated(d_index)) allocate (d_index(0:n_roads))
     if (.not.allocated(p_index)) allocate (p_index(0:n_roads))
@@ -401,6 +407,8 @@
     if (.not.allocated(x_road)) allocate (x_road(2,0:n_roads))
     if (.not.allocated(y_road)) allocate (y_road(2,0:n_roads))
     if (.not.allocated(length_road)) allocate (length_road(0:n_roads))
+    if (.not.allocated(lon_road)) allocate (lon_road(2,0:n_roads))
+    if (.not.allocated(lat_road)) allocate (lat_road(2,0:n_roads))
     if (.not.allocated(line_or_grid_data_flag)) allocate (line_or_grid_data_flag(0:n_roads))
     !if (.not.allocated(adt_road)) allocate (adt_road(0:n_roads))
     
@@ -455,6 +463,10 @@
     x_road(2,:)=transfer_x_road(2,:)
     y_road(2,:)=transfer_y_road(2,:)
     length_road=transfer_length_road
+    lon_road(1,:)=transfer_lon_road(1,:)
+    lat_road(1,:)=transfer_lat_road(1,:)
+    lon_road(2,:)=transfer_lon_road(2,:)
+    lat_road(2,:)=transfer_lat_road(2,:)
 
     road_type_activity_flag(road_type_salt_index(1),:)=transfer_road_type_activity_flag(transfer_road_type_salt_index(1),:)
     road_type_activity_flag(road_type_salt_index(2),:)=transfer_road_type_activity_flag(transfer_road_type_salt_index(2),:)
@@ -476,8 +488,13 @@
 
     !Check
     do i=1,n_roads
+        !write(*,*) i
         !write(*,'(<n_skyview>f6.1)') zen_skyview(:,i)
         !write(*,'(5f6.1)') h_canyon(:,i),b_canyon(i),b_road(i),b_road_lanes(i)
+        !write(*,'(8f6.1)') slope_road(i),LAT(i),LON(i),Z_SURF(i),z_FF(i),z_T(i),z2_T(i),albedo_road(i)
+        !write(*,'(6f12.1)') x_road(:,i),y_road(:,i),length_road(i),ang_road(i)
+        !write(*,'(3i6)') d_index(i),p_index(i),roadtype_index(i)
+
     enddo
     
     
@@ -558,6 +575,8 @@
     if (allocated(transfer_y_road)) deallocate (transfer_y_road)
     if (allocated(transfer_length_road)) deallocate (transfer_length_road)
     if (allocated(transfer_line_or_grid_data_flag)) deallocate (transfer_line_or_grid_data_flag)
+    if (allocated(transfer_lon_road)) deallocate (transfer_lon_road)
+    if (allocated(transfer_lat_road)) deallocate (transfer_lat_road)
     
     !Road type actvity factors
     if (allocated(transfer_road_type_activity_flag)) deallocate (transfer_road_type_activity_flag)

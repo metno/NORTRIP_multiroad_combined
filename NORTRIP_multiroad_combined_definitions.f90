@@ -179,6 +179,8 @@
     real, allocatable :: transfer_x_road(:,:)
     real, allocatable :: transfer_y_road(:,:)
     real, allocatable :: transfer_length_road(:)
+    real, allocatable :: transfer_lon_road(:,:)
+    real, allocatable :: transfer_lat_road(:,:)
         
     !Activity control flags allocatable to each road (road_type_activity_index,road)
     integer, allocatable :: transfer_road_type_activity_flag(:,:)
