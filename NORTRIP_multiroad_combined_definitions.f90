@@ -108,6 +108,7 @@
     character(256) transfer_path_init
     character(256) transfer_path_init_out
     character(256) transfer_filename_init
+    character(256) transfer_filename_init_netcdf
     character(256) transfer_path_output_emis
     character(256) transfer_filename_output_emis
     character(256) transfer_filename_output_grid_emis
