@@ -31,7 +31,7 @@ NORTRIP_initialise_time.o :  NORTRIP/NORTRIP_definitions.o
 NORTRIP_inputdata_subroutines.o :  NORTRIP/NORTRIP_definitions.o
 NORTRIP_inputparams_subroutines.o :  NORTRIP/NORTRIP_definitions.o
 NORTRIP_logfile_subroutines.o :  NORTRIP/NORTRIP_definitions.o
-NORTRIP_main_run.o :  NORTRIP/NORTRIP_definitions.o
+NORTRIP_main_run.o :  NORTRIP/NORTRIP_definitions.o NORTRIP/NORTRIP_main_run_forecast.o
 NORTRIP_main_run_forecast.o :  NORTRIP/NORTRIP_definitions.o
 NORTRIP_maths.o :  NORTRIP/NORTRIP_definitions.o
 NORTRIP_read_commandline.o :  NORTRIP/NORTRIP_definitions.o
