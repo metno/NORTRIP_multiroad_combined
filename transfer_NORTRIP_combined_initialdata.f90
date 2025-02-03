@@ -1,4 +1,4 @@
-0subroutine transfer_preprocessor_to_combined_initialdata
+subroutine transfer_preprocessor_to_combined_initialdata
     
     use NORTRIP_multiroad_index_definitions
     use NORTRIP_multiroad_combined_definitions
