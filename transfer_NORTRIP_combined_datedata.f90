@@ -38,7 +38,7 @@ subroutine transfer_preprocessor_to_combined_datedata
     n_time=transfer_n_time
     
     if (.not.allocated(date_data)) allocate(date_data(num_date_index,n_time))
-    if (.not.allocated(date_str)) allocate(date_str(3,n_time))
+    if (.not.allocated(date_str)) allocate(date_str(4,n_time))
     
     date_data=transfer_date_data
     available_date_data=transfer_available_date_data
