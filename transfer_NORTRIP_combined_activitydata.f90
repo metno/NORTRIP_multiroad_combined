@@ -107,6 +107,8 @@ subroutine transfer_preprocessor_to_combined_activitydata
         enddo
         enddo
     
+    !if (n_input_activity.eq.0) transfer_activity_input_data=0
+
         write(unit_logfile,'(A,5i)') 'Number of activity road links matched without valid dates: ',sum(match_link)
 
         match_link=0
