@@ -16,6 +16,7 @@
     path_init=pathname_init_in
     path_init_out=pathname_init_out
     filename_init=filename_init_in
+    filename_init_netcdf=filename_init_in_netcdf
     filename_output_roadmeteo=trim(filename_NORTRIP_template)//'_roadmeteo.txt'
     
     !Open the log file when it is transferred back
@@ -32,6 +33,7 @@
     transfer_path_init=path_init
     transfer_path_init_out=path_init_out
     transfer_filename_init=filename_init
+    transfer_filename_init_netcdf=filename_init_netcdf
     transfer_path_output_emis=path_output_emis
     transfer_filename_output_emis=filename_output_emis
     transfer_filename_output_grid_emis=filename_output_grid_emis
