@@ -13,7 +13,6 @@ F90FLAGS = -O3 -g -ftz $(shell nf-config --fflags)
 LLIB = $(shell nf-config --flibs) 
 LDFLAGS =  $(F90FLAGS) $(LLIB)
 
-#PROG = NORTRIP_multiroad_combined_v2-el7
 PROG = NORTRIP_multiroad_combined_v2-r8
 
 NILU_DIR = NORTRIP_multiroad/NILU
