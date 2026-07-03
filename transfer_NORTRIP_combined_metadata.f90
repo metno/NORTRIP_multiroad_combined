@@ -276,54 +276,56 @@
     allocate (transfer_end_month_binding(0:transfer_n_roads))
     
     transfer_read_auto_activity_data=multi_read_auto_activity_data
-
-    transfer_salting_hour=multi_salting_hour
-    transfer_delay_salting_day=multi_delay_salting_day
-    transfer_check_salting_day=multi_check_salting_day
-    transfer_min_temp_salt=multi_min_temp_salt
-    transfer_max_temp_salt=multi_max_temp_salt
-    transfer_precip_rule_salt=multi_precip_rule_salt
-    transfer_RH_rule_salt=multi_RH_rule_salt
-    transfer_g_salting_rule=multi_g_salting_rule
-    transfer_salt_mass=multi_salt_mass
-    transfer_salt_dilution=multi_salt_dilution 
-    transfer_salt_type_distribution=multi_salt_type_distribution 
+    transfer_salting_hour(1,1:transfer_n_roads)=multi_salting_hour(1,save_links(1:n_save_links))
+    transfer_salting_hour(2,1:transfer_n_roads)=multi_salting_hour(2,save_links(1:n_save_links))
+    transfer_delay_salting_day(1:transfer_n_roads)=multi_delay_salting_day(save_links(1:n_save_links))
+    transfer_check_salting_day(1:transfer_n_roads)=multi_check_salting_day(save_links(1:n_save_links))
+    transfer_min_temp_salt(1:transfer_n_roads)=multi_min_temp_salt(save_links(1:n_save_links))
+    transfer_max_temp_salt(1:transfer_n_roads)=multi_max_temp_salt(save_links(1:n_save_links))
+    transfer_precip_rule_salt(1:transfer_n_roads)=multi_precip_rule_salt(save_links(1:n_save_links))
+    transfer_RH_rule_salt(1:transfer_n_roads)=multi_RH_rule_salt(save_links(1:n_save_links))
+    transfer_g_salting_rule(1:transfer_n_roads)=multi_g_salting_rule(save_links(1:n_save_links))
+    transfer_salt_mass(1:transfer_n_roads)=multi_salt_mass(save_links(1:n_save_links))
+    transfer_salt_dilution(1:transfer_n_roads)=multi_salt_dilution(save_links(1:n_save_links))
+    transfer_salt_type_distribution(1:transfer_n_roads)=multi_salt_type_distribution(save_links(1:n_save_links)) 
+    transfer_sanding_hour(1,1:transfer_n_roads)=multi_sanding_hour(1,save_links(1:n_save_links))
+    transfer_sanding_hour(2,1:transfer_n_roads)=multi_sanding_hour(2,save_links(1:n_save_links))
+    transfer_delay_sanding_day(1:transfer_n_roads)=multi_delay_sanding_day(save_links(1:n_save_links)) 
+    transfer_check_sanding_day(1:transfer_n_roads)=multi_check_sanding_day(save_links(1:n_save_links))
+    transfer_min_temp_sand(1:transfer_n_roads)=multi_min_temp_sand(save_links(1:n_save_links)) 
+    transfer_max_temp_sand(1:transfer_n_roads)=multi_max_temp_sand(save_links(1:n_save_links))
+    transfer_precip_rule_sand(1:transfer_n_roads)=multi_precip_rule_sand(save_links(1:n_save_links))
+    transfer_RH_rule_sand(1:transfer_n_roads)=multi_RH_rule_sand(save_links(1:n_save_links)) 
+    transfer_g_sanding_rule(1:transfer_n_roads)=multi_g_sanding_rule(save_links(1:n_save_links)) 
+    transfer_sand_mass(1:transfer_n_roads)=multi_sand_mass(save_links(1:n_save_links)) 
+    transfer_sand_dilution(1:transfer_n_roads)=multi_sand_dilution(save_links(1:n_save_links))
     
-    transfer_sanding_hour=multi_sanding_hour
-    transfer_delay_sanding_day=multi_delay_sanding_day 
-    transfer_check_sanding_day=multi_check_sanding_day
-    transfer_min_temp_sand=multi_min_temp_sand 
-    transfer_max_temp_sand=multi_max_temp_sand
-    transfer_precip_rule_sand=multi_precip_rule_sand
-    transfer_RH_rule_sand=multi_RH_rule_sand 
-    transfer_g_sanding_rule=multi_g_sanding_rule 
-    transfer_sand_mass=multi_sand_mass 
-    transfer_sand_dilution=multi_sand_dilution
-    
-    transfer_delay_ploughing_hour=multi_delay_ploughing_hour
-    transfer_ploughing_thresh_2=multi_ploughing_thresh_2 
+    transfer_delay_ploughing_hour(1:transfer_n_roads)=multi_delay_ploughing_hour(save_links(1:n_save_links))
+    transfer_ploughing_thresh_2(1:transfer_n_roads)=multi_ploughing_thresh_2(save_links(1:n_save_links)) 
 
-    transfer_cleaning_hour=multi_cleaning_hour
-    transfer_delay_cleaning_day=multi_delay_cleaning_day
-    transfer_min_temp_cleaning=multi_min_temp_cleaning
-    transfer_clean_with_salting=multi_clean_with_salting
-    transfer_start_month_cleaning=multi_start_month_cleaning
-    transfer_end_month_cleaning=multi_end_month_cleaning
-    transfer_wetting_with_cleaning=multi_wetting_with_cleaning
-    transfer_efficiency_of_cleaning=multi_efficiency_of_cleaning
+    transfer_cleaning_hour(1,1:transfer_n_roads)=multi_cleaning_hour(1,save_links(1:n_save_links))
+    transfer_cleaning_hour(2,1:transfer_n_roads)=multi_cleaning_hour(2,save_links(1:n_save_links))
+    transfer_delay_cleaning_day(1:transfer_n_roads)=multi_delay_cleaning_day(save_links(1:n_save_links))
+    transfer_min_temp_cleaning(1:transfer_n_roads)=multi_min_temp_cleaning(save_links(1:n_save_links))
+    transfer_clean_with_salting(1:transfer_n_roads)=multi_clean_with_salting(save_links(1:n_save_links))
+    transfer_start_month_cleaning(1:transfer_n_roads)=multi_start_month_cleaning(save_links(1:n_save_links))
+    transfer_end_month_cleaning(1:transfer_n_roads)=multi_end_month_cleaning(save_links(1:n_save_links))
+    transfer_wetting_with_cleaning(1:transfer_n_roads)=multi_wetting_with_cleaning(save_links(1:n_save_links))
+    transfer_efficiency_of_cleaning(1:transfer_n_roads)=multi_efficiency_of_cleaning(save_links(1:n_save_links))
 
-    transfer_binding_hour=multi_binding_hour
-    transfer_delay_binding_day=multi_delay_binding_day
-    transfer_check_binding_day=multi_check_binding_day
-    transfer_min_temp_binding=multi_min_temp_binding
-    transfer_max_temp_binding=multi_max_temp_binding
-    transfer_precip_rule_binding=multi_precip_rule_binding
-    transfer_RH_rule_binding=multi_RH_rule_binding
-    transfer_g_binding_rule=multi_g_binding_rule
-    transfer_binding_mass=multi_binding_mass
-    transfer_binding_dilution=multi_binding_dilution
-    transfer_start_month_binding=multi_start_month_binding
-    transfer_end_month_binding=multi_end_month_binding
+    transfer_binding_hour(1,1:transfer_n_roads)=multi_binding_hour(1,save_links(1:n_save_links))
+    transfer_binding_hour(2,1:transfer_n_roads)=multi_binding_hour(2,save_links(1:n_save_links))
+    transfer_delay_binding_day(1:transfer_n_roads)=multi_delay_binding_day(save_links(1:n_save_links))
+    transfer_check_binding_day(1:transfer_n_roads)=multi_check_binding_day(save_links(1:n_save_links))
+    transfer_min_temp_binding(1:transfer_n_roads)=multi_min_temp_binding(save_links(1:n_save_links))
+    transfer_max_temp_binding(1:transfer_n_roads)=multi_max_temp_binding(save_links(1:n_save_links))
+    transfer_precip_rule_binding(1:transfer_n_roads)=multi_precip_rule_binding(save_links(1:n_save_links))
+    transfer_RH_rule_binding(1:transfer_n_roads)=multi_RH_rule_binding(save_links(1:n_save_links))
+    transfer_g_binding_rule(1:transfer_n_roads)=multi_g_binding_rule(save_links(1:n_save_links))
+    transfer_binding_mass(1:transfer_n_roads)=multi_binding_mass(save_links(1:n_save_links))
+    transfer_binding_dilution(1:transfer_n_roads)=multi_binding_dilution(save_links(1:n_save_links))
+    transfer_start_month_binding(1:transfer_n_roads)=multi_start_month_binding(save_links(1:n_save_links))
+    transfer_end_month_binding(1:transfer_n_roads)=multi_end_month_binding(save_links(1:n_save_links))
 
     end subroutine transfer_preprocessor_to_combined_metadata
 
